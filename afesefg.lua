@@ -258,5 +258,5 @@ task.spawn(function()
 ‎    mainFrame.Visible = true
 ‎    centerHolder.Visible = true
 ‎    reopenIcon.Visible = false
-‎end)
-    end)
+    ‎end)
+end)
