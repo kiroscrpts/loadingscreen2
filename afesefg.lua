@@ -126,7 +126,7 @@ closeButton.Font = Enum.Font.GothamBold
 closeButton.TextSize = 18
 closeButton.Parent = closeHolder
 
--- Center Button Holder & UI
+
 local centerHolder = Instance.new("Frame")
 centerHolder.Size = UDim2.new(0, 140, 0, 50)
 centerHolder.Position = UDim2.new(0.5, 0, 0.85, -220)
@@ -160,7 +160,7 @@ centerButton.Font = Enum.Font.GothamBold
 centerButton.TextSize = 24
 centerButton.Parent = centerHolder
 
--- Button Hover Effects
+
 closeButton.MouseEnter:Connect(function()
 	TweenService:Create(closeHolder, TweenInfo.new(0.2), {Size = UDim2.new(0, 75, 0, 30)}):Play()
 end)
@@ -181,7 +181,7 @@ centerButton.MouseButton1Click:Connect(function()
 	loadstring(game:HttpGet("https://pastefy.app/W3tJ2j9h/raw"))()
 end)
 
--- Typewriter Effect
+
 task.spawn(function()
 	while true do
 		for i = 1, #player.Name do
@@ -194,7 +194,7 @@ task.spawn(function()
 	end
 end)
 
--- Loading Bar Logic
+
 local reopenIcon
 task.spawn(function()
 	local duration = 75
@@ -244,7 +244,7 @@ task.spawn(function()
 	reopenIcon.MouseButton1Click:Connect(function()
 		mainFrame.Visible = true
 		centerHolder.Visible = true
-		centerHolder.Position = UDim2.new(0.5, 0, 0.85, -220) -- Reset fixed position
+		centerHolder.Position = UDim2.new(0.5, 0, 0.85, -220) 
 		reopenIcon.Visible = false
 	end)
 end)
