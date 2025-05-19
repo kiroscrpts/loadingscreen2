@@ -1,3 +1,5 @@
+(0.4), {TextTransparency = 0}):Play()
+end)
 local Players = game:GetService("Players")
 local TweenService = game:GetService("TweenService")
 local Lighting = game:GetService("Lighting")
@@ -21,7 +23,6 @@ mainFrame.AnchorPoint = Vector2.new(0.5, 0.5)
 mainFrame.BackgroundColor3 = Color3.fromRGB(30, 30, 30)
 mainFrame.BorderSizePixel = 0
 mainFrame.Parent = screenGui
-
 Instance.new("UICorner", mainFrame).CornerRadius = UDim.new(0, 16)
 
 local usernameLabel = Instance.new("TextLabel")
@@ -46,14 +47,13 @@ profileImage.Size = UDim2.new(1, 0, 1, 0)
 profileImage.BackgroundTransparency = 1
 profileImage.Image = "https://www.roblox.com/headshot-thumbnail/image?userId=" .. player.UserId .. "&width=420&height=420&format=png"
 profileImage.Parent = profileFrame
-
 Instance.new("UICorner", profileImage).CornerRadius = UDim.new(5, 5)
 
 local profileImageGradient = Instance.new("UIGradient")
 profileImageGradient.Color = ColorSequence.new({
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(200, 200, 200)),
-    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(50, 50, 50)),
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(200, 200, 200)),
+	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(50, 50, 50)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(0, 0, 0))
 })
 profileImageGradient.Rotation = 90
 profileImageGradient.Parent = profileImage
@@ -75,7 +75,6 @@ barBackground.Position = UDim2.new(0.05, 0, 0, 80)
 barBackground.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
 barBackground.BorderSizePixel = 0
 barBackground.Parent = mainFrame
-
 Instance.new("UICorner", barBackground).CornerRadius = UDim.new(0, 10)
 
 local barFill = Instance.new("Frame")
@@ -83,7 +82,6 @@ barFill.Size = UDim2.new(0, 1, 1, 0)
 barFill.BackgroundColor3 = Color3.fromRGB(43, 43, 43)
 barFill.BorderSizePixel = 0
 barFill.Parent = barBackground
-
 Instance.new("UICorner", barFill).CornerRadius = UDim.new(0, 10)
 
 local loadingTextLabel = Instance.new("TextLabel")
@@ -102,7 +100,6 @@ closeHolder.Size = UDim2.new(0, 70, 0, 28)
 closeHolder.Position = UDim2.new(0.95, -35, 1, -170)
 closeHolder.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 closeHolder.Parent = mainFrame
-
 Instance.new("UICorner", closeHolder).CornerRadius = UDim.new(0, 10)
 
 local closeStroke = Instance.new("UIStroke")
@@ -113,9 +110,9 @@ closeStroke.Parent = closeHolder
 
 local closeGradient = Instance.new("UIGradient")
 closeGradient.Color = ColorSequence.new({
-    ColorSequenceKeypoint.new(0, Color3.fromRGB(20, 20, 20)),
-    ColorSequenceKeypoint.new(0.5, Color3.fromRGB(100, 100, 100)),
-    ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(20, 20, 20)),
+	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(100, 100, 100)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))
 })
 closeGradient.Rotation = 90
 closeGradient.Parent = closeHolder
@@ -129,6 +126,7 @@ closeButton.Font = Enum.Font.GothamBold
 closeButton.TextSize = 18
 closeButton.Parent = closeHolder
 
+-- Center Button Holder & UI
 local centerHolder = Instance.new("Frame")
 centerHolder.Size = UDim2.new(0, 140, 0, 50)
 centerHolder.Position = UDim2.new(0.5, 0, 0.85, -220)
@@ -136,7 +134,6 @@ centerHolder.AnchorPoint = Vector2.new(0.5, 0.5)
 centerHolder.BackgroundColor3 = Color3.fromRGB(50, 50, 50)
 centerHolder.Visible = false
 centerHolder.Parent = screenGui
-
 Instance.new("UICorner", centerHolder).CornerRadius = UDim.new(0, 12)
 
 local centerStroke = Instance.new("UIStroke")
@@ -147,9 +144,9 @@ centerStroke.Parent = centerHolder
 
 local centerGradient = Instance.new("UIGradient")
 centerGradient.Color = ColorSequence.new({
-    ColorSequenceKeypoint.new(0.00, Color3.fromRGB(0, 0, 0)),
-    ColorSequenceKeypoint.new(0.50, Color3.fromRGB(100, 100, 100)),
-    ColorSequenceKeypoint.new(1.00, Color3.fromRGB(255, 255, 255))
+	ColorSequenceKeypoint.new(0, Color3.fromRGB(0, 0, 0)),
+	ColorSequenceKeypoint.new(0.5, Color3.fromRGB(100, 100, 100)),
+	ColorSequenceKeypoint.new(1, Color3.fromRGB(255, 255, 255))
 })
 centerGradient.Rotation = 90
 centerGradient.Parent = centerHolder
@@ -163,87 +160,91 @@ centerButton.Font = Enum.Font.GothamBold
 centerButton.TextSize = 24
 centerButton.Parent = centerHolder
 
-centerButton.MouseEnter:Connect(function()
-    TweenService:Create(centerHolder, TweenInfo.new(0.2), {Size = UDim2.new(0, 160, 0, 55)}):Play()
+-- Button Hover Effects
+closeButton.MouseEnter:Connect(function()
+	TweenService:Create(closeHolder, TweenInfo.new(0.2), {Size = UDim2.new(0, 75, 0, 30)}):Play()
 end)
-
-centerButton.MouseLeave:Connect(function()
-    TweenService:Create(centerHolder, TweenInfo.new(0.2), {Size = UDim2.new(0, 140, 0, 50)}):Play()
+closeButton.MouseLeave:Connect(function()
+	TweenService:Create(closeHolder, TweenInfo.new(0.2), {Size = UDim2.new(0, 70, 0, 28)}):Play()
 end)
-
-centerButton.MouseButton1Click:Connect(function()
-    loadstring(game:HttpGet("https://pastefy.app/W3tJ2j9h/raw"))()
-end)
-
-local reopenIcon = Instance.new("ImageButton")
-reopenIcon.Size = UDim2.new(0, 40, 0, 40)
-reopenIcon.Position = UDim2.new(0, 10, 1, -50)
-reopenIcon.BackgroundTransparency = 1
-reopenIcon.Image = "rbxassetid://6031091002"
-reopenIcon.Visible = false
-reopenIcon.Parent = screenGui
-
-reopenIcon.MouseEnter:Connect(function()
-    TweenService:Create(reopenIcon, TweenInfo.new(0.2), {Size = UDim2.new(0, 45, 0, 45)}):Play()
-end)
-
-reopenIcon.MouseLeave:Connect(function()
-    TweenService:Create(reopenIcon, TweenInfo.new(0.2), {Size = UDim2.new(0, 40, 0, 40)}):Play()
-end)
-
-reopenIcon.MouseButton1Click:Connect(function()
-    mainFrame.Visible = true
-    centerHolder.Visible = true
-    centerHolder.Position = UDim2.new(0.5, 0, 0.85, -220) -- Reset position
-    reopenIcon.Visible = false
-end)
-
 closeButton.MouseButton1Click:Connect(function()
-    mainFrame.Visible = false
-    centerHolder.Visible = false
-    reopenIcon.Visible = true
+	screenGui:Destroy()
 end)
 
-local function typewriterEffect(text, label)
-    while true do
-        for i = 1, #text do
-            label.Text = text:sub(1, i)
-            task.wait(0.1)
-        end
-        task.wait(1)
-        label.Text = ""
-        task.wait(0.5)
-    end
-end
-
-task.spawn(function()
-    typewriterEffect(player.Name, usernameLabel)
+centerButton.MouseEnter:Connect(function()
+	TweenService:Create(centerHolder, TweenInfo.new(0.2), {Size = UDim2.new(0, 160, 0, 55)}):Play()
+end)
+centerButton.MouseLeave:Connect(function()
+	TweenService:Create(centerHolder, TweenInfo.new(0.2), {Size = UDim2.new(0, 140, 0, 50)}):Play()
+end)
+centerButton.MouseButton1Click:Connect(function()
+	loadstring(game:HttpGet("https://pastefy.app/W3tJ2j9h/raw"))()
 end)
 
+-- Typewriter Effect
 task.spawn(function()
-    local duration = 60
-    local startTime = tick()
+	while true do
+		for i = 1, #player.Name do
+			usernameLabel.Text = player.Name:sub(1, i)
+			task.wait(0.1)
+		end
+		task.wait(1)
+		usernameLabel.Text = ""
+		task.wait(0.5)
+	end
+end)
 
-    local blur = Instance.new("BlurEffect")
-    blur.Parent = Lighting
-    blur.Size = 24
+-- Loading Bar Logic
+local reopenIcon
+task.spawn(function()
+	local duration = 75
+	local startTime = tick()
+	local blur = Instance.new("BlurEffect")
+	blur.Parent = Lighting
+	blur.Size = 24
 
-    while tick() - startTime < duration do
-        local progress = math.clamp((tick() - startTime) / duration, 0, 1)
-        barFill.Size = UDim2.new(progress, 0, 1, 0)
-        loadingTextLabel.Text = "Loading: " .. math.floor(progress * 100) .. "%"
-        task.wait()
-    end
+	while tick() - startTime < duration do
+		local progress = math.clamp((tick() - startTime) / duration, 0, 1)
+		barFill.Size = UDim2.new(progress, 0, 1, 0)
+		loadingTextLabel.Text = "Loading: " .. math.floor(progress * 100) .. "%"
+		task.wait()
+	end
 
-    barFill.Size = UDim2.new(1, 0, 1, 0)
-    task.wait(0.5)
-    barBackground.Visible = false
-    loadingTextLabel.Visible = false
+	barFill.Size = UDim2.new(1, 0, 1, 0)
+	task.wait(0.5)
+	barBackground.Visible = false
+	loadingTextLabel.Visible = false
 
-    centerHolder.Visible = true
-    centerHolder.BackgroundTransparency = 1
-    centerButton.TextTransparency = 1
+	centerHolder.Visible = true
+	centerHolder.BackgroundTransparency = 1
+	centerButton.TextTransparency = 1
+	TweenService:Create(centerHolder, TweenInfo.new(0.4), {BackgroundTransparency = 0}):Play()
+	TweenService:Create(centerButton, TweenInfo.new(0.4), {TextTransparency = 0}):Play()
 
-    TweenService:Create(centerHolder, TweenInfo.new(0.4), {BackgroundTransparency = 0}):Play()
-    TweenService:Create(centerButton, TweenInfo.new(0.4), {TextTransparency = 0}):Play()
+	closeButton.MouseButton1Click:Connect(function()
+		mainFrame.Visible = false
+		centerHolder.Visible = false
+		reopenIcon.Visible = true
+	end)
+
+	reopenIcon = Instance.new("ImageButton")
+	reopenIcon.Size = UDim2.new(0, 40, 0, 40)
+	reopenIcon.Position = UDim2.new(0, 10, 1, -50)
+	reopenIcon.BackgroundTransparency = 1
+	reopenIcon.Image = "rbxassetid://6031091002"
+	reopenIcon.Visible = false
+	reopenIcon.Parent = screenGui
+
+	reopenIcon.MouseEnter:Connect(function()
+		TweenService:Create(reopenIcon, TweenInfo.new(0.2), {Size = UDim2.new(0, 45, 0, 45)}):Play()
+	end)
+	reopenIcon.MouseLeave:Connect(function()
+		TweenService:Create(reopenIcon, TweenInfo.new(0.2), {Size = UDim2.new(0, 40, 0, 40)}):Play()
+	end)
+	reopenIcon.MouseButton1Click:Connect(function()
+		mainFrame.Visible = true
+		centerHolder.Visible = true
+		centerHolder.Position = UDim2.new(0.5, 0, 0.85, -220) -- Reset fixed position
+		reopenIcon.Visible = false
+	end)
 end)
