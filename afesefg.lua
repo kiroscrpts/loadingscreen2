@@ -259,3 +259,4 @@ task.spawn(function()
 ‎    centerHolder.Visible = true
 ‎    reopenIcon.Visible = false
 ‎end)
+    end)
