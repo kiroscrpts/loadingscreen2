@@ -175,29 +175,6 @@ centerButton.MouseButton1Click:Connect(function()
     loadstring(game:HttpGet("https://pastefy.app/W3tJ2j9h/raw"))()
 end)
 
-local reopenIcon = Instance.new("ImageButton")
-reopenIcon.Size = UDim2.new(0, 40, 0, 40)
-reopenIcon.Position = UDim2.new(0, 10, 1, -50)
-reopenIcon.BackgroundTransparency = 1
-reopenIcon.Image = "rbxassetid://6031091002"
-reopenIcon.Visible = false
-reopenIcon.Parent = screenGui
-
-reopenIcon.MouseEnter:Connect(function()
-    TweenService:Create(reopenIcon, TweenInfo.new(0.2), {Size = UDim2.new(0, 45, 0, 45)}):Play()
-end)
-
-reopenIcon.MouseLeave:Connect(function()
-    TweenService:Create(reopenIcon, TweenInfo.new(0.2), {Size = UDim2.new(0, 40, 0, 40)}):Play()
-end)
-
-reopenIcon.MouseButton1Click:Connect(function()
-    mainFrame.Visible = true
-    centerHolder.Visible = true
-    centerHolder.Position = UDim2.new(0.5, 0, 0.85, -220) -- Reset position
-    reopenIcon.Visible = false
-end)
-
 closeButton.MouseButton1Click:Connect(function()
     mainFrame.Visible = false
     centerHolder.Visible = false
@@ -221,7 +198,7 @@ task.spawn(function()
 end)
 
 task.spawn(function()
-    local duration = 120
+    local duration = 75
     local startTime = tick()
 
     local blur = Instance.new("BlurEffect")
