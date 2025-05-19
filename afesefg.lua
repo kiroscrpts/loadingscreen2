@@ -204,7 +204,7 @@ task.spawn(function()
 end)
 
 task.spawn(function()
-    local duration = 180
+    local duration = 120
     local startTime = tick()
 
     local blur = Instance.new("BlurEffect")
@@ -231,7 +231,31 @@ task.spawn(function()
     TweenService:Create(centerHolder, TweenInfo.new(0.4), {BackgroundTransparency = 0}):Play()
     TweenService:Create(centerButton, TweenInfo.new(0.4), {TextTransparency = 0}):Play()
 
-    closeButton.MouseButton1Click:Connect(function()
-        blur:Destroy()
-    end)
-end)
+    ‎closeButton.MouseButton1Click:Connect(function()
+‎    mainFrame.Visible = false
+‎    centerHolder.Visible = false
+
+‎    reopenIcon.Visible = true
+‎end)
+‎
+‎local reopenIcon = Instance.new("ImageButton")
+‎reopenIcon.Size = UDim2.new(0, 40, 0, 40)
+‎reopenIcon.Position = UDim2.new(0, 10, 1, -50)
+‎reopenIcon.BackgroundTransparency = 1
+‎reopenIcon.Image = "rbxassetid://6031091002" -- you can use another icon ID if you prefer
+‎reopenIcon.Visible = false
+‎reopenIcon.Parent = screenGui
+
+‎reopenIcon.MouseEnter:Connect(function()
+‎    TweenService:Create(reopenIcon, TweenInfo.new(0.2), {Size = UDim2.new(0, 45, 0, 45)}):Play()
+‎end)
+‎
+‎reopenIcon.MouseLeave:Connect(function()
+‎    TweenService:Create(reopenIcon, TweenInfo.new(0.2), {Size = UDim2.new(0, 40, 0, 40)}):Play()
+‎end)
+‎
+‎reopenIcon.MouseButton1Click:Connect(function()
+‎    mainFrame.Visible = true
+‎    centerHolder.Visible = true
+‎    reopenIcon.Visible = false
+‎end)
