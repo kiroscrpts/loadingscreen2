@@ -58,6 +58,17 @@ profileImageGradient.Color = ColorSequence.new({
 profileImageGradient.Rotation = 90
 profileImageGradient.Parent = profileImage
 
+local titleLabel = Instance.new("TextLabel")
+titleLabel.Size = UDim2.new(1, 0, 0, 25)
+titleLabel.Position = UDim2.new(0, 0, 0, 55) -- Slightly above the bar
+titleLabel.BackgroundTransparency = 1
+titleLabel.Text = "Loading Script"
+titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255) -- or a custom color
+titleLabel.Font = Enum.Font.GothamBold
+titleLabel.TextSize = 20
+titleLabel.TextXAlignment = Enum.TextXAlignment.Center
+titleLabel.Parent = mainFrame
+
 local barBackground = Instance.new("Frame")
 barBackground.Size = UDim2.new(0.9, 0, 0, 25)
 barBackground.Position = UDim2.new(0.05, 0, 0, 80)
@@ -193,7 +204,7 @@ task.spawn(function()
 end)
 
 task.spawn(function()
-    local duration = 15
+    local duration = 180
     local startTime = tick()
 
     local blur = Instance.new("BlurEffect")
