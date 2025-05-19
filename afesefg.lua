@@ -60,10 +60,10 @@ profileImageGradient.Parent = profileImage
 
 local titleLabel = Instance.new("TextLabel")
 titleLabel.Size = UDim2.new(1, 0, 0, 25)
-titleLabel.Position = UDim2.new(0, 0, 0, 55) -- Slightly above the bar
+titleLabel.Position = UDim2.new(0, 0, 0, 55)
 titleLabel.BackgroundTransparency = 1
 titleLabel.Text = "Loading Script"
-titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255) -- or a custom color
+titleLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
 titleLabel.Font = Enum.Font.GothamBold
 titleLabel.TextSize = 20
 titleLabel.TextXAlignment = Enum.TextXAlignment.Center
@@ -129,18 +129,6 @@ closeButton.Font = Enum.Font.GothamBold
 closeButton.TextSize = 18
 closeButton.Parent = closeHolder
 
-closeButton.MouseEnter:Connect(function()
-    TweenService:Create(closeHolder, TweenInfo.new(0.2), {Size = UDim2.new(0, 75, 0, 30)}):Play()
-end)
-
-closeButton.MouseLeave:Connect(function()
-    TweenService:Create(closeHolder, TweenInfo.new(0.2), {Size = UDim2.new(0, 70, 0, 28)}):Play()
-end)
-
-closeButton.MouseButton1Click:Connect(function()
-    screenGui:Destroy()
-end)
-
 local centerHolder = Instance.new("Frame")
 centerHolder.Size = UDim2.new(0, 140, 0, 50)
 centerHolder.Position = UDim2.new(0.5, 0, 0.85, -220)
@@ -187,6 +175,34 @@ centerButton.MouseButton1Click:Connect(function()
     loadstring(game:HttpGet("https://pastefy.app/W3tJ2j9h/raw"))()
 end)
 
+local reopenIcon = Instance.new("ImageButton")
+reopenIcon.Size = UDim2.new(0, 40, 0, 40)
+reopenIcon.Position = UDim2.new(0, 10, 1, -50)
+reopenIcon.BackgroundTransparency = 1
+reopenIcon.Image = "rbxassetid://6031091002"
+reopenIcon.Visible = false
+reopenIcon.Parent = screenGui
+
+reopenIcon.MouseEnter:Connect(function()
+    TweenService:Create(reopenIcon, TweenInfo.new(0.2), {Size = UDim2.new(0, 45, 0, 45)}):Play()
+end)
+
+reopenIcon.MouseLeave:Connect(function()
+    TweenService:Create(reopenIcon, TweenInfo.new(0.2), {Size = UDim2.new(0, 40, 0, 40)}):Play()
+end)
+
+reopenIcon.MouseButton1Click:Connect(function()
+    mainFrame.Visible = true
+    centerHolder.Visible = true
+    reopenIcon.Visible = false
+end)
+
+closeButton.MouseButton1Click:Connect(function()
+    mainFrame.Visible = false
+    centerHolder.Visible = false
+    reopenIcon.Visible = true
+end)
+
 local function typewriterEffect(text, label)
     while true do
         for i = 1, #text do
@@ -214,12 +230,11 @@ task.spawn(function()
     while tick() - startTime < duration do
         local progress = math.clamp((tick() - startTime) / duration, 0, 1)
         barFill.Size = UDim2.new(progress, 0, 1, 0)
-
         loadingTextLabel.Text = "Loading: " .. math.floor(progress * 100) .. "%"
         task.wait()
     end
-    barFill.Size = UDim2.new(1, 0, 1, 0)
 
+    barFill.Size = UDim2.new(1, 0, 1, 0)
     task.wait(0.5)
     barBackground.Visible = false
     loadingTextLabel.Visible = false
@@ -230,33 +245,4 @@ task.spawn(function()
 
     TweenService:Create(centerHolder, TweenInfo.new(0.4), {BackgroundTransparency = 0}):Play()
     TweenService:Create(centerButton, TweenInfo.new(0.4), {TextTransparency = 0}):Play()
-
-    ‎closeButton.MouseButton1Click:Connect(function()
-‎    mainFrame.Visible = false
-‎    centerHolder.Visible = false
-
-‎    reopenIcon.Visible = true
-‎end)
-‎
-‎local reopenIcon = Instance.new("ImageButton")
-‎reopenIcon.Size = UDim2.new(0, 40, 0, 40)
-‎reopenIcon.Position = UDim2.new(0, 10, 1, -50)
-‎reopenIcon.BackgroundTransparency = 1
-‎reopenIcon.Image = "rbxassetid://6031091002" 
-‎reopenIcon.Visible = false
-‎reopenIcon.Parent = screenGui
-
-‎reopenIcon.MouseEnter:Connect(function()
-‎    TweenService:Create(reopenIcon, TweenInfo.new(0.2), {Size = UDim2.new(0, 45, 0, 45)}):Play()
-‎end)
-‎
-‎reopenIcon.MouseLeave:Connect(function()
-‎    TweenService:Create(reopenIcon, TweenInfo.new(0.2), {Size = UDim2.new(0, 40, 0, 40)}):Play()
-‎end)
-‎
-‎reopenIcon.MouseButton1Click:Connect(function()
-‎    mainFrame.Visible = true
-‎    centerHolder.Visible = true
-‎    reopenIcon.Visible = false
-‎end)
 end)
