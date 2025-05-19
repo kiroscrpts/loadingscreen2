@@ -194,6 +194,7 @@ end)
 reopenIcon.MouseButton1Click:Connect(function()
     mainFrame.Visible = true
     centerHolder.Visible = true
+    centerHolder.Position = UDim2.new(0.5, 0, 0.85, -220) -- Reset position
     reopenIcon.Visible = false
 end)
 
@@ -220,7 +221,7 @@ task.spawn(function()
 end)
 
 task.spawn(function()
-    local duration = 120
+    local duration = 60
     local startTime = tick()
 
     local blur = Instance.new("BlurEffect")
