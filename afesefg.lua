@@ -242,7 +242,7 @@ task.spawn(function()
 ‎reopenIcon.Size = UDim2.new(0, 40, 0, 40)
 ‎reopenIcon.Position = UDim2.new(0, 10, 1, -50)
 ‎reopenIcon.BackgroundTransparency = 1
-‎reopenIcon.Image = "rbxassetid://6031091002" -- you can use another icon ID if you prefer
+‎reopenIcon.Image = "rbxassetid://6031091002" 
 ‎reopenIcon.Visible = false
 ‎reopenIcon.Parent = screenGui
 
@@ -258,5 +258,5 @@ task.spawn(function()
 ‎    mainFrame.Visible = true
 ‎    centerHolder.Visible = true
 ‎    reopenIcon.Visible = false
-    ‎end)
+‎end)
 end)
